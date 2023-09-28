@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+.random-users {
+  display: flex;
+  font-family: "Roboto Condensed", sans-serif;
+  color: white;
+  flex-direction: column;
+  block-size: 100%;
+  justify-content: space-between;
+}
+#users > li {
+  display: flex;
+  flex-direction: column;
+}
