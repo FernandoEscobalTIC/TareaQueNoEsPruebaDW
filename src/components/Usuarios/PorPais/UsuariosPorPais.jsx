@@ -1,33 +1,44 @@
-import React from "react";
-import "./UsuariosPorPais";
-function UsuariosPorPais(props) {
-  const ul = document.getElementById("users");
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import "../Usuarios.css";
 
-  fetch(`https://randomuser.me/api/?nat=${props.nat}`)
-    .then((resp) => resp.json())
-    .then(function (data) {
-      let users = data.results;
-      return function (user) {
-        let li = document.createElement("li");
-        let img = document.createElement("img");
-        let span = document.createElement("span");
-        let p = document.createElement("p");
-        img.src = user.picture.medium;
-        span.innerHTML = `${user.name.first} ${user.name.last}`;
-        p.innerHTML = `${user.email}`;
-        li.appendChild(img);
-        li.appendChild(span);
-        li.appendChild(p);
-        ul.appendChild(li);
-      };
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
+function UsuariosPorPais() {
+  const [user, setUser] = useState({});
+  const { nat } = useParams();
+
+  //No me preguntes el por qué utilizé manipulación del dom en react mientras estaba en la clase, realmente ni yo me entiendo.
+  useEffect(() => {
+    async function getUsuariosPorPais() {
+      const response = await fetch(`https://randomuser.me/api/?nat=${nat}`);
+      const data = await response.json();
+      const firstUser = data.results[0];
+      setUser({
+        name: `${firstUser.name.first} ${firstUser.name.last}`,
+        email: firstUser.email,
+        picture: firstUser.picture.large,
+        country: firstUser.location.country,
+      });
+    }
+    getUsuariosPorPais();
+  }, [nat]);
+
   return (
-    <>
-      <ul id="authors"></ul>
-    </>
+    <div>
+      <div className="users-container">
+        <div className="user-container">
+          <p>{user.country}</p>
+          <img className="users-image" src={user.picture} />
+          <p>
+            <span>Nombre:</span> {user.name}
+          </p>
+          <p>
+            <span>Email:</span> {user.email}
+          </p>
+        </div>
+      </div>
+      <Link to="/">Link para volver</Link>
+    </div>
   );
 }
 

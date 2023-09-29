@@ -17,16 +17,8 @@ const router = createBrowserRouter([
     element: <UsuariosTresRandom />,
   },
   {
-    path: "/usuarios/es",
-    element: <UsuariosPorPais nat={"es"} />,
-  },
-  {
-    path: "/usuarios/br",
-    element: <UsuariosPorPais nat={"br"} />,
-  },
-  {
-    path: "/usuarios/us",
-    element: <UsuariosPorPais nat={"us"} />,
+    path: "/usuarios/:nat",
+    element: <UsuariosPorPais />,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

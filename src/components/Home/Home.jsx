@@ -1,17 +1,22 @@
+import { Link } from "react-router-dom";
 import "./Home.css";
 import React from "react";
 function Home() {
   return (
     <>
-      <a href="/usuarios">Ver tres usuarios</a>
-      <h1>Ver usuarios por país:</h1>
-      <ul>
-        <li>
-          <a href="/usuarios/es">Usuarios de España</a>
-          <a href="/usuarios/br">Usuarios de Brasil</a>
-          <a href="/usuarios/us">Usuarios de Estados Unidos</a>
-        </li>
-      </ul>
+      <h1>Bienvenido, elije un link a continuación:</h1>
+      <div className="user-links-container">
+        <div className="random-users-section">
+          <h2>Ver usuarios random:</h2>
+          <Link to="/usuarios">Ver tres usuarios</Link>
+        </div>
+        <div className="nat-user-section">
+          <h2>Ver usuarios por país:</h2>
+          <Link to="/usuarios/es">Usuarios de España</Link>
+          <Link to="/usuarios/br">Usuarios de Brasil</Link>
+          <Link to="/usuarios/us">Usuarios de Estados Unidos</Link>
+        </div>
+      </div>
     </>
   );
 }
