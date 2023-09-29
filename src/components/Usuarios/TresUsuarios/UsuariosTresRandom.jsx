@@ -26,13 +26,16 @@ function App() {
       <ul className="users-container">
         {users.map((user, index) => (
           <li className="user-container">
-            <p>{user.country}</p>
-            <img className="users-image" src={user.picture} />
+            <p>{user.country ? user.country : "Loading..."} </p>
+            <img
+              className="users-image"
+              src={user.picture ? user.picture : "Loading..."}
+            />
             <p>
-              <span>Nombre:</span> {user.name}
+              <span>Nombre:</span> {user.name ? user.name : "Loading..."}
             </p>
             <p>
-              <span>Email:</span> {user.email}
+              <span>Email:</span> {user.email ? user.email : "Loading..."}
             </p>
           </li>
         ))}

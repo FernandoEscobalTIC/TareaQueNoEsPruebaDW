@@ -1,5 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:wght@700&family=Encode+Sans+Expanded:wght@500&family=Montserrat:wght@500&display=swap');
 
 body {
+  display: flex;
+  width: 100%;
+  justify-content: center;
   font-family: 'Montserrat', sans-serif;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
